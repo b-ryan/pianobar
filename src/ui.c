@@ -789,7 +789,7 @@ void BarUiStartEventCmd (const BarSettings_t *settings, const char *type,
 		/* child */
 		close (pipeFd[1]);
 		dup2 (pipeFd[0], fileno (stdin));
-		execl (settings->eventCmd, settings->eventCmd, type, (char *) NULL);
+		execlp (settings->eventCmd, settings->eventCmd, type, (char *) NULL);
 		BarUiMsg (settings, MSG_ERR, "Cannot start eventcmd. (%s)\n", strerror (errno));
 		close (pipeFd[0]);
 		exit (1);
